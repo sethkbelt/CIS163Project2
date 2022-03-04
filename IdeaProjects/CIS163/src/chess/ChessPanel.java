@@ -45,7 +45,8 @@ public class ChessPanel extends JPanel {
 
         JPanel boardpanel = new JPanel();
         JPanel buttonpanel = new JPanel();
-        boardpanel.setLayout(new GridLayout(model.numRows(), model.numColumns(), 1, 1));
+        boardpanel.setLayout(new GridLayout(model.numRows(), model.numColumns(),
+                1, 1));
 
         for (int r = 0; r < model.numRows(); r++) {
             for (int c = 0; c < model.numColumns(); c++) {
@@ -201,7 +202,8 @@ public class ChessPanel extends JPanel {
         public void actionPerformed(ActionEvent event) {
 
             if (event.getSource() == undo) {
-                if (model.currentPlayer() == Player.WHITE && model.aiFlag == true) {
+                if (model.currentPlayer() == Player.WHITE &&
+                        model.aiFlag == true) {
                     model.undo();
                     model.undo();
                     displayBoard();
@@ -222,7 +224,8 @@ public class ChessPanel extends JPanel {
                             toRow = r;
                             toCol = c;
                             firstTurnFlag = true;
-                            Move m = new Move(fromRow, fromCol, toRow, toCol);
+                            Move m = new Move(fromRow, fromCol, toRow,
+                                    toCol);
                             if ((model.isValidMove(m)) == true) {
                                 model.move(m);
                                 displayBoard();
@@ -239,7 +242,8 @@ public class ChessPanel extends JPanel {
                                             "Checkmate! " + model.currentPlayer()
                                                     + " wins.", "Checkmate",
                                             JOptionPane.INFORMATION_MESSAGE, temp);
-                                } else if (model.inCheck(model.currentPlayer()) == true) {
+                                } else if (model.inCheck(model.currentPlayer()) ==
+                                        true) {
                                     if (model.currentPlayer() == Player.WHITE)
                                         temp = wKing;
                                     else
@@ -253,7 +257,8 @@ public class ChessPanel extends JPanel {
                                 model.promotion();
                                 displayBoard();
 
-                                if (model.aiFlag == true && model.currentPlayer() == Player.BLACK) {
+                                if (model.aiFlag == true && model.currentPlayer() ==
+                                        Player.BLACK) {
                                     model.AI();
                                     model.promotion();
                                     displayBoard();

@@ -45,42 +45,50 @@ public class Knight extends ChessPiece {
 		if (super.isValidMove(move, board)) {
 
 			//Move to space is TWO DOWN and ONE LEFT
-			if ((move.fromColumn + 2 == move.toColumn) && (move.fromRow - 1 == move.toRow)) {
+			if ((move.fromColumn + 2 == move.toColumn) && (move.fromRow - 1
+					== move.toRow)) {
 				return valid;
 			}
 
 			//Move to space is TWO DOWN and ONE RIGHT
-			if ((move.fromColumn + 2 == move.toColumn) && (move.fromRow + 1 == move.toRow)) {
+			if ((move.fromColumn + 2 == move.toColumn) && (move.fromRow + 1
+					== move.toRow)) {
 				return valid;
 			}
 
 			//Move to space is ONE DOWN and TWO LEFT
-			if ((move.fromColumn + 1 == move.toColumn) && (move.fromRow - 2 == move.toRow)) {
+			if ((move.fromColumn + 1 == move.toColumn) && (move.fromRow - 2
+					== move.toRow)) {
 				return valid;
 			}
 
 			//Move to space is ONE DOWN and TWO RIGHT
-			if ((move.fromColumn + 1 == move.toColumn) && (move.fromRow + 2 == move.toRow)) {
+			if ((move.fromColumn + 1 == move.toColumn) && (move.fromRow + 2
+					== move.toRow)) {
 				return valid;
 			}
 
 			//Move to space is TWO UP and ONE LEFT
-			if ((move.fromColumn - 2 == move.toColumn) && (move.fromRow - 1 == move.toRow)) {
+			if ((move.fromColumn - 2 == move.toColumn) && (move.fromRow - 1
+					== move.toRow)) {
 				return valid;
 			}
 
 			//Move to space is TWO UP and ONE RIGHT
-			if ((move.fromColumn - 2 == move.toColumn) && (move.fromRow + 1 == move.toRow)) {
+			if ((move.fromColumn - 2 == move.toColumn) && (move.fromRow + 1
+					== move.toRow)) {
 				return valid;
 			}
 
 			//Move to space is ONE UP and TWO LEFT
-			if ((move.fromColumn - 1 == move.toColumn) && (move.fromRow - 2 == move.toRow)) {
+			if ((move.fromColumn - 1 == move.toColumn) && (move.fromRow - 2
+					== move.toRow)) {
 				return valid;
 			}
 
 			//Move to space is ONE UP and TWO RIGHT
-			if ((move.fromColumn - 1 == move.toColumn) && (move.fromRow + 2 == move.toRow)) {
+			if ((move.fromColumn - 1 == move.toColumn) && (move.fromRow + 2
+					== move.toRow)) {
 				return valid;
 			}
 		}
@@ -95,7 +103,8 @@ public class Knight extends ChessPiece {
 	 *****************************************************************/
 	@Override
 	public ImageIcon whiteIcon() {
-		ImageIcon Icon = new ImageIcon(getClass().getResource("/resources/icons/wKnight.png"));
+		ImageIcon Icon = new ImageIcon(getClass().getResource(
+				"/resources/icons/wKnight.png"));
 		return Icon;
 	}
 
@@ -106,7 +115,8 @@ public class Knight extends ChessPiece {
 	 *****************************************************************/
 	@Override
 	public ImageIcon blackIcon() {
-		ImageIcon Icon = new ImageIcon(getClass().getResource("/resources/icons/bKnight.png"));
+		ImageIcon Icon = new ImageIcon(getClass().getResource(
+				"/resources/icons/bKnight.png"));
 		return Icon;
 	}
 }

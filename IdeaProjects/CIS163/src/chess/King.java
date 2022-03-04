@@ -52,13 +52,17 @@ public class King extends ChessPiece {
 			if(move.toColumn - move.fromColumn == 2 && move.fromRow == move.toRow) {
 				//Castle kingside
 				if (hasMoved == false) {
-					if (board[move.toRow][move.fromColumn + 1] == null && board[move.toRow][move.fromColumn + 2] == null) {
+					if (board[move.toRow][move.fromColumn + 1] == null &&
+							board[move.toRow][move.fromColumn + 2] == null) {
 						castled = true;
 						return true;
 					}
 					// castle not king side
-				} else if (move.fromColumn - move.toColumn == 3 && move.fromRow == move.toRow) {
-					if (board[move.toRow][move.fromColumn - 1] == null && board[move.toRow][move.fromColumn - 2] == null && board[move.toRow][move.fromColumn - 3] == null) {
+				} else if (move.fromColumn - move.toColumn == 3 &&
+						move.fromRow == move.toRow) {
+					if (board[move.toRow][move.fromColumn - 1] == null &&
+							board[move.toRow][move.fromColumn - 2] == null
+							&& board[move.toRow][move.fromColumn - 3] == null) {
 						castled = true;
 						return true;
 					}
@@ -69,49 +73,57 @@ public class King extends ChessPiece {
 
 
 			//Move to space is one UP on the board
-			if ((move.toRow == move.fromRow - 1) && (move.fromColumn == move.toColumn)) {
+			if ((move.toRow == move.fromRow - 1) && (move.fromColumn
+					== move.toColumn)) {
 				hasMoved = true;
 				return valid;
 			}
 
 			//Move to space is one DOWN on the board
-			if ((move.toRow == move.fromRow + 1) && (move.fromColumn == move.toColumn)) {
+			if ((move.toRow == move.fromRow + 1) && (move.fromColumn
+					== move.toColumn)) {
 				hasMoved = true;
 				return valid;
 			}
 
 			//Move to space is one to the RIGHT
-			if ((move.toColumn == move.fromColumn + 1) && (move.fromRow == move.toRow)) {
+			if ((move.toColumn == move.fromColumn + 1) && (move.fromRow
+					== move.toRow)) {
 				hasMoved = true;
 				return valid;
 			}
 
 			//Move to space is one to the LEFT
-			if ((move.toColumn == move.fromColumn - 1) && (move.fromRow == move.toRow)) {
+			if ((move.toColumn == move.fromColumn - 1) && (move.fromRow
+					== move.toRow)) {
 				hasMoved = true;
 				return valid;
 			}
 
 			//Move to space is one UP and one RIGHT
-			if ((move.toColumn == move.fromColumn + 1) && (move.toRow == move.fromRow - 1)) {
+			if ((move.toColumn == move.fromColumn + 1) && (move.toRow
+					== move.fromRow - 1)) {
 				hasMoved = true;
 				return valid;
 			}
 
 			//Move to space is one UP and one LEFT
-			if ((move.toColumn == move.fromColumn - 1) && (move.toRow == move.fromRow - 1)) {
+			if ((move.toColumn == move.fromColumn - 1) && (move.toRow
+					== move.fromRow - 1)) {
 				hasMoved = true;
 				return valid;
 			}
 
 			//Move to space is one DOWN and one RIGHT
-			if ((move.toColumn == move.fromColumn + 1) && (move.toRow == move.fromRow + 1)) {
+			if ((move.toColumn == move.fromColumn + 1) && (move.toRow
+					== move.fromRow + 1)) {
 				hasMoved = true;
 				return valid;
 			}
 
 			//Move to space is one DOWN and one LEFT
-			if ((move.toColumn == move.fromColumn - 1) && (move.toRow == move.fromRow + 1)) {
+			if ((move.toColumn == move.fromColumn - 1) && (move.toRow
+					== move.fromRow + 1)) {
 				hasMoved = true;
 				return valid;
 			}
@@ -127,7 +139,8 @@ public class King extends ChessPiece {
 	 *****************************************************************/
 	@Override
 	public ImageIcon whiteIcon() {
-		ImageIcon Icon = new ImageIcon(getClass().getResource("/resources/icons/wKing.png"));
+		ImageIcon Icon = new ImageIcon(getClass().getResource(
+				"/resources/icons/wKing.png"));
 		return Icon;
 	}
 
@@ -138,7 +151,8 @@ public class King extends ChessPiece {
 	 *****************************************************************/
 	@Override
 	public ImageIcon blackIcon() {
-		ImageIcon Icon = new ImageIcon(getClass().getResource("/resources/icons/bKing.png"));
+		ImageIcon Icon = new ImageIcon(getClass().getResource(
+				"/resources/icons/bKing.png"));
 		return Icon;
 	}
 }

@@ -234,7 +234,8 @@ public class Bishop extends ChessPiece {
 	 *****************************************************************/
 	@Override
 	public ImageIcon whiteIcon() {
-		ImageIcon Icon = new ImageIcon(getClass().getResource("/resources/icons/wBishop.png"));
+		ImageIcon Icon = new ImageIcon(getClass().getResource("/" +
+				"resources/icons/wBishop.png"));
 		return Icon;
 	}
 
@@ -245,7 +246,8 @@ public class Bishop extends ChessPiece {
 	 *****************************************************************/
 	@Override
 	public ImageIcon blackIcon() {
-		ImageIcon Icon = new ImageIcon(getClass().getResource("/resources/icons/bBishop.png"));
+		ImageIcon Icon = new ImageIcon(getClass().getResource("/" +
+				"resources/icons/bBishop.png"));
 		return Icon;
 	}
 

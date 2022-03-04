@@ -115,7 +115,8 @@ public class Rook extends ChessPiece {
 	 *****************************************************************/
 	@Override
 	public ImageIcon whiteIcon() {
-		ImageIcon Icon = new ImageIcon(getClass().getResource("/resources/icons/wRook.png"));
+		ImageIcon Icon = new ImageIcon(getClass().getResource(
+				"/resources/icons/wRook.png"));
 		return Icon;
 	}
 
@@ -126,7 +127,8 @@ public class Rook extends ChessPiece {
 	 *****************************************************************/
 	@Override
 	public ImageIcon blackIcon() {
-		ImageIcon Icon = new ImageIcon(getClass().getResource("/resources/icons/bRook.png"));
+		ImageIcon Icon = new ImageIcon(getClass().getResource(
+				"/resources/icons/bRook.png"));
 		return Icon;
 	}
 }

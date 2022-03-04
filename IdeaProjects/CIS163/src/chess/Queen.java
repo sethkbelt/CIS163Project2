@@ -20,7 +20,8 @@ public class Queen extends ChessPiece {
 	 *****************************************************************/
 	@Override
 	public ImageIcon whiteIcon() {
-		ImageIcon Icon = new ImageIcon(getClass().getResource("/resources/icons/wQueen.png"));
+		ImageIcon Icon = new ImageIcon(getClass().getResource(
+				"/resources/icons/wQueen.png"));
 		return Icon;
 	}
 
@@ -31,7 +32,8 @@ public class Queen extends ChessPiece {
 	 *****************************************************************/
 	@Override
 	public ImageIcon blackIcon() {
-		ImageIcon Icon = new ImageIcon(getClass().getResource("/resources/icons/bQueen.png"));
+		ImageIcon Icon = new ImageIcon(getClass().getResource(
+				"/resources/icons/bQueen.png"));
 		return Icon;
 	}
 

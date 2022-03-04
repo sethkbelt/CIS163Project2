@@ -142,12 +142,16 @@ public class ChessModel implements IChessModel {
 
                         //checking all of their moves
                         for (int tempRow = 0; tempRow < numRows(); tempRow++) {
-                            for (int tempCol = 0; tempCol < numColumns(); tempCol++) {
-                                Move tempMove = new Move(row, col, tempRow, tempCol);
+                            for (int tempCol = 0; tempCol < numColumns();
+                                 tempCol++) {
+                                Move tempMove = new Move(row, col, tempRow,
+                                        tempCol);
 
-                                // create a temporary chess board and fill with pieces from
+                                // create a temporary chess board and fill
+                                // with pieces from
                                 // actual board of game
-                                IChessPiece[][] tempBoard = new IChessPiece[numRows()][numColumns()];
+                                IChessPiece[][] tempBoard =
+                                        new IChessPiece[numRows()][numColumns()];
                                 for (int r = 0; r < numRows(); r++) {
                                     for (int c = 0; c < numColumns(); c++) {
                                         tempBoard[r][c] = pieceAt(r, c);
@@ -157,14 +161,20 @@ public class ChessModel implements IChessModel {
                                 // checking if the tempPiece is a valid move
                                 if (tempPiece.isValidMove(tempMove, tempBoard)) {
                                     if (inCheck(this.currentPlayer()) == true) {
-                                        tempBoard[tempMove.toRow][tempMove.toColumn] =
-                                                tempBoard[tempMove.fromRow][tempMove.fromColumn];
+                                        tempBoard[tempMove.toRow][tempMove.
+                                                toColumn] = tempBoard[tempMove.
+                                                fromRow]
+                                                [tempMove.fromColumn];
 
                                         // remove original piece moving
-                                        tempBoard[tempMove.fromRow][tempMove.fromColumn] = null;
+                                        tempBoard[tempMove.fromRow][tempMove.
+                                                fromColumn] = null;
 
-                                        // checking if you are still in check after the move
-                                        if (inCheckTemp(this.currentPlayer(), tempBoard) == false)
+                                        // checking if you are still in check
+                                        // after the move
+                                        if (inCheckTemp(this.currentPlayer()
+                                                ,tempBoard)
+                                                == false)
                                             return false;
                                         else
                                             valid = true;
@@ -190,17 +200,19 @@ public class ChessModel implements IChessModel {
     public boolean isValidMove(Move move) {
 
         //Checks to see if it is a valid place on the board.
-        if ((move.fromRow > numRows() || move.fromRow < 0) || (move.fromColumn > numColumns()
-                || move.fromColumn < 0) || (move.toRow > numRows() || move.toRow < 0)
-                || (move.toColumn > numColumns() || move.toColumn < 0)) {
+        if ((move.fromRow > numRows() || move.fromRow < 0) || (move.fromColumn >
+                numColumns() || move.fromColumn < 0) || (move.toRow >
+                numRows() || move.toRow < 0) || (move.toColumn > numColumns()
+                || move.toColumn < 0)) {
 
             // throw new IndexOutOfBoundsException
             throw new IndexOutOfBoundsException();
         }
 
         //Checks to see if it is a valid place on the board.
-        if ((move.fromRow > numRows() || move.fromRow < 0) || (move.fromColumn > numColumns()
-                || move.fromColumn < 0) || (move.toRow > numRows() || move.toRow < 0)
+        if ((move.fromRow > numRows() || move.fromRow < 0) ||
+                (move.fromColumn > numColumns() || move.fromColumn < 0) ||
+                (move.toRow > numRows() || move.toRow < 0)
                 || (move.toColumn > numColumns() || move.toColumn < 0)) {
 
             return false;
@@ -249,10 +261,15 @@ public class ChessModel implements IChessModel {
         if (isValidMove(move) && piece.player() == player) {
 
             // if the king has castled
-            if (board[move.fromRow][move.fromColumn] == board[7][4] || board[move.fromRow][move.fromColumn] == board[0][4]) {
-                if (((King) board[move.fromRow][move.fromColumn]).castled && ((King) board[move.fromRow][move.fromColumn]).hasMoved == false) {
+            if (board[move.fromRow][move.fromColumn] == board[7][4]
+                    || board[move.fromRow][move.fromColumn] ==
+                    board[0][4]) {if (((King) board[move.fromRow]
+                    [move.fromColumn]).castled && ((King) board[move.fromRow]
+                    [move.fromColumn]).hasMoved == false) {
                     // move the knight
-                    Move move1 = new Move(move.fromRow, move.fromColumn + 3, move.toRow, move.fromColumn + 1);
+                    Move move1 = new Move(move.fromRow,
+                            move.fromColumn + 3, move.toRow,
+                            move.fromColumn + 1);
                     saveMoveModel(move1);
 
                     board[move.toRow][move.fromColumn + 1] =
@@ -260,7 +277,8 @@ public class ChessModel implements IChessModel {
                     // remove original piece moving
                     board[move.fromRow][move.fromColumn + 3] = null;
 
-                    Move move2 = new Move(move.fromRow, move.fromColumn, move.toRow, move.fromColumn + 2);
+                    Move move2 = new Move(move.fromRow, move.fromColumn,
+                            move.toRow, move.fromColumn + 2);
                     saveMoveModel(move2);
                     //move king
                     board[move.fromRow][move.fromColumn + 2] =
@@ -319,7 +337,8 @@ public class ChessModel implements IChessModel {
         int row = -1;
         int colum = -1;
 
-        //iterate through the whole board to find the kings current row and column
+        //iterate through the whole board to find the kings current
+        // row and column
         for (int i = 0; i < numRows(); i++) {
             for (int j = 0; j < numColumns(); j++) {
                 if (board[i][j] != null) {
@@ -360,14 +379,16 @@ public class ChessModel implements IChessModel {
     public boolean inCheckTemp(Player p, IChessPiece[][] tempBoard) {
         boolean valid = false;
 
-        //iterate through the whole board to find the kings current row and column
+        //iterate through the whole board to find the kings
+        // current row and column
         int row = -1;
         int colum = -1;
 
         for (int i = 0; i < numRows(); i++) {
             for (int j = 0; j < numColumns(); j++) {
                 if (tempBoard[i][j] != null) {
-                    if (tempBoard[i][j].player().equals(p) && tempBoard[i][j].type().equals("King")) {
+                    if (tempBoard[i][j].player().equals(p) && tempBoard[i][j].
+                            type().equals("King")) {
                         row = i;
                         colum = j;
                         break;
@@ -379,7 +400,8 @@ public class ChessModel implements IChessModel {
         // check all the opposite players to see if they can kill the king
         for (int i = 0; i < numRows(); i++) {
             for (int j = 0; j < numColumns(); j++) {
-                if (tempBoard[i][j] != null && !tempBoard[i][j].player().equals(p)) {
+                if (tempBoard[i][j] != null && !tempBoard[i][j].player()
+                        .equals(p)) {
                     Move s = new Move(i, j, row, colum);
                     if (tempBoard[i][j].isValidMove(s, tempBoard)) {
                         valid = true;
@@ -479,30 +501,40 @@ public class ChessModel implements IChessModel {
 
                     // try to move that black player
                     for (int fromRow = toRow; fromRow < numRows(); fromRow++) {
-                        for (int fromCol = toRow; fromCol < numColumns(); fromCol++) {
+                        for (int fromCol = toRow; fromCol < numColumns();
+                             fromCol++) {
 
                             Move move = new Move(fromRow, fromCol, toRow, toCol);
                             IChessPiece piece = pieceAt(fromRow, fromCol);
 
                             // if it can take a white player, do it!
                             if (pieceAt(fromRow, fromCol) != null)
-                                if (pieceAt(fromRow, fromCol).player().equals(Player.WHITE)
+                                if (pieceAt(fromRow, fromCol).player().equals
+                                        (Player.WHITE)
                                         && piece.isValidMove(move, board)) {
-                                    Move move1 = new Move(fromRow, fromCol, toRow, toCol);
+                                    Move move1 = new Move(fromRow, fromCol,
+                                            toRow, toCol);
 
                                     // if it is a valid move do it
                                     if (piece.isValidMove(move1, board)) {
 
                                         //find a way for black to move out
-                                        for (int toRowB = 0; toRowB < numRows(); toRowB++) {
-                                            for (int toColB = 0; toColB < numColumns(); toColB++) {
-                                                Move moveA = new Move(toRow, toCol, toRowB, toColB);
-                                                IChessPiece piece1 = pieceAt(toRow, toCol);
+                                        for (int toRowB = 0; toRowB < numRows();
+                                             toRowB++) {
+                                            for (int toColB = 0; toColB <
+                                                    numColumns(); toColB++) {
+                                                Move moveA = new Move(toRow, toCol,
+                                                        toRowB, toColB);
+                                                IChessPiece piece1 = pieceAt(toRow,
+                                                        toCol);
 
-                                                // if black has a valid move, move out of danger
-                                                if (piece1.isValidMove(moveA, board)) {
+                                                // if black has a valid move, move
+                                                // out of danger
+                                                if (piece1.isValidMove(moveA,
+                                                        board)) {
                                                     saveMoveModel(moveA);
-                                                    setPiece(toRowB, toColB, piece1);
+                                                    setPiece(toRowB, toColB,
+                                                            piece1);
                                                     board[toRow][toCol] = null;
                                                     setNextPlayer();
                                                     return true;
@@ -532,13 +564,14 @@ public class ChessModel implements IChessModel {
             for (int fromRow = 0; fromRow < numRows(); fromRow++) {
                 for (int fromCol = 0; fromCol < numColumns(); fromCol++) {
                     if (pieceAt(fromRow, fromCol) != null &&
-                            pieceAt(fromRow, fromCol).player().equals(Player.BLACK)) {
+                            pieceAt(fromRow, fromCol).player().equals
+                                    (Player.BLACK)) {
 
                         // try all of AI pieces moves
                         for (int toRow = 0; toRow < numRows(); toRow++) {
-                            for (int toCol = 0; toCol < numColumns(); toCol++) {
-
-                                Move move = new Move(fromRow, fromCol, toRow, toCol);
+                            for (int toCol = 0; toCol < numColumns(); toCol++){
+                                Move move = new Move(fromRow, fromCol, toRow,
+                                        toCol);
                                 IChessPiece piece = pieceAt(fromRow, fromCol);
 
                                 // if AI has a valid move then move it
@@ -577,22 +610,27 @@ public class ChessModel implements IChessModel {
         for (int fromRow = 0; fromRow < numRows(); fromRow++) {
             for (int fromCol = 0; fromCol < numColumns(); fromCol++) {
                 if (pieceAt(fromRow, fromCol) != null &&
-                        pieceAt(fromRow, fromCol).player().equals(Player.BLACK)) {
+                        pieceAt(fromRow, fromCol).player()
+                                .equals(Player.BLACK)) {
 
                     // try to move that black player
                     for (int toRow = fromRow; toRow < numRows(); toRow++) {
-                        for (int toCol = fromCol; toCol < numColumns(); toCol++) {
+                        for (int toCol = fromCol; toCol < numColumns();
+                             toCol++) {
 
                             Move move = new Move(fromRow, fromCol, toRow, toCol);
                             IChessPiece piece = pieceAt(fromRow, fromCol);
 
                             // if it can take a white player, do it!
                             if (pieceAt(toRow, toCol) != null)
-                                if (pieceAt(toRow, toCol).player().equals(Player.WHITE)
+                                if (pieceAt(toRow, toCol).player()
+                                        .equals(Player.WHITE)
                                         && piece.isValidMove(move, board)) {
-                                    Move move1 = new Move(fromRow, fromCol, toRow, toCol);
+                                    Move move1 = new Move(fromRow, fromCol,
+                                            toRow, toCol);
 
-                                    // if it is a valid move destroy the white piece
+                                    // if it is a valid move destroy the
+                                    // white piece
                                     if (piece.isValidMove(move1, board)) {
                                         saveMoveModel(move1);
                                         setPiece(toRow, toCol, piece);
@@ -623,34 +661,38 @@ public class ChessModel implements IChessModel {
         for (int fromRow = 0; fromRow < numRows(); fromRow++) {
             for (int fromCol = 0; fromCol < numColumns(); fromCol++) {
                 if (pieceAt(fromRow, fromCol) != null &&
-                        pieceAt(fromRow, fromCol).player().equals(Player.BLACK)) {
-
+                        pieceAt(fromRow, fromCol).player().equals(Player.BLACK))
+                {
                     // try to move that black player
                     for (int toRow = fromRow; toRow < numRows(); toRow++) {
-                        for (int toCol = fromCol; toCol < numColumns(); toCol++) {
-
+                        for (int toCol = fromCol; toCol < numColumns(); toCol++)
+                        {
                             Move move = new Move(fromRow, fromCol, toRow, toCol);
                             IChessPiece piece = pieceAt(fromRow, fromCol);
 
                             // if it can take a white player, do it!
                             if (pieceAt(toRow, toCol) != null)
-                                if (pieceAt(toRow, toCol).player().equals(Player.WHITE)
+                                if (pieceAt(toRow, toCol).player()
+                                        .equals(Player.WHITE)
                                         && piece.isValidMove(move, board)) {
-                                    Move move1 = new Move(fromRow, fromCol, toRow, toCol);
+                                    Move move1 = new Move(fromRow, fromCol,
+                                            toRow, toCol);
 
-                                    // if it is a valid move destroy the white piece
+                                    // if alid move destroy the white piece
                                     if (piece.isValidMove(move1, board)) {
                                         saveMoveModel(move1);
                                         setPiece(toRow, toCol, piece);
                                         board[fromRow][fromCol] = null;
                                         setNextPlayer();
 
-                                        // If it put the white player into check do it
+                                        // If it put the white player into check
+                                        // do it
                                         if (inCheck(Player.WHITE) == true) {
                                             flag = true;
                                             return flag;
                                         }
-                                        // See if there is another move to attack and put into check
+                                        // See if there is another move to
+                                        // attack and put into check
                                         else
                                             undo();
                                     }
@@ -683,8 +725,10 @@ public class ChessModel implements IChessModel {
                             IChessPiece piece = pieceAt(fromRow, fromCol);
 
                             // tries to move the pawn up
-                            if (pieceAt(fromRow, fromCol).type().equals("Pawn") && piece.isValidMove(move, board)) {
-                                Move movePawn = new Move(fromRow, fromCol, toRow + 1, toCol);
+                            if (pieceAt(fromRow, fromCol).type().equals("Pawn")
+                                    && piece.isValidMove(move, board)) {
+                                Move movePawn = new Move(fromRow, fromCol,
+                                        toRow + 1, toCol);
                                 if (piece.isValidMove(movePawn, board)) {
                                     saveMoveModel(movePawn);
                                     setPiece(toRow + 1, toCol, piece);
@@ -700,7 +744,9 @@ public class ChessModel implements IChessModel {
                                 }
 
                                 // tries to move the knight up
-                            } else if (pieceAt(fromRow, fromCol).type().equals("Knight") && piece.isValidMove(move, board)) {
+                            } else if (pieceAt(fromRow, fromCol).type()
+                                    .equals("Knight") && piece
+                                    .isValidMove(move, board)) {
                                 saveMoveModel(move);
                                 setPiece(toRow, toCol, piece);
                                 board[fromRow][fromCol] = null;
@@ -708,7 +754,9 @@ public class ChessModel implements IChessModel {
                                 return true;
 
                                 // tries to move the bishop up
-                            } else if (pieceAt(fromRow, fromCol).type().equals("Bishop") && piece.isValidMove(move, board)) {
+                            } else if (pieceAt(fromRow, fromCol).type()
+                                    .equals("Bishop") && piece
+                                    .isValidMove(move, board)) {
                                 saveMoveModel(move);
                                 setPiece(toRow, toCol, piece);
                                 board[fromRow][fromCol] = null;
@@ -716,7 +764,9 @@ public class ChessModel implements IChessModel {
                                 return true;
 
                                 // tries to move the rook up
-                            } else if (pieceAt(fromRow, fromCol).type().equals("Rook") && piece.isValidMove(move, board)) {
+                            } else if (pieceAt(fromRow, fromCol).type()
+                                    .equals("Rook") && piece
+                                    .isValidMove(move, board)) {
                                 saveMoveModel(move);
                                 setPiece(toRow, toCol, piece);
                                 board[fromRow][fromCol] = null;
@@ -724,7 +774,9 @@ public class ChessModel implements IChessModel {
                                 return true;
 
                                 // tries to move the queen up
-                            } else if (pieceAt(fromRow, fromCol).type().equals("Queen") && piece.isValidMove(move, board)) {
+                            } else if (pieceAt(fromRow, fromCol).type()
+                                    .equals("Queen") && piece
+                                    .isValidMove(move, board)) {
                                 saveMoveModel(move);
                                 setPiece(toRow, toCol, piece);
                                 board[fromRow][fromCol] = null;
@@ -800,9 +852,11 @@ public class ChessModel implements IChessModel {
 
         // remove the moves from the arrayList
         if (moves.size() > 0) {
-            board[moves.get(moves.size() - 1).toRow][moves.get(moves.size() - 1).toColumn]
+            board[moves.get(moves.size() - 1).toRow][moves.get
+                    (moves.size() - 1).toColumn]
                     = savePieceTo.get(savePieceTo.size() - 1);
-            board[moves.get(moves.size() - 1).fromRow][moves.get(moves.size() - 1).fromColumn]
+            board[moves.get(moves.size() - 1).fromRow][moves.get
+                    (moves.size() - 1).fromColumn]
                     = savePieceFrom.get(savePieceFrom.size() - 1);
             savePieceTo.remove(savePieceTo.size() - 1);
             savePieceFrom.remove(savePieceFrom.size() - 1);

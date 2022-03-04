@@ -160,7 +160,8 @@ public class Pawn extends ChessPiece {
 	 *****************************************************************/
 	@Override
 	public ImageIcon whiteIcon() {
-		ImageIcon Icon = new ImageIcon(getClass().getResource("/resources/icons/wPawn.png"));
+		ImageIcon Icon = new ImageIcon(getClass().getResource(
+				"/resources/icons/wPawn.png"));
 		return Icon;
 	}
 
@@ -171,7 +172,8 @@ public class Pawn extends ChessPiece {
 	 *****************************************************************/
 	@Override
 	public ImageIcon blackIcon() {
-		ImageIcon Icon = new ImageIcon(getClass().getResource("/resources/icons/bPawn.png"));
+		ImageIcon Icon = new ImageIcon(getClass().getResource(
+				"/resources/icons/bPawn.png"));
 		return Icon;
 	}
 	}
